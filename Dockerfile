@@ -18,16 +18,12 @@ ENV TZ=Europe/Vienna
 ENV SCREEN_RESOLUTION 1024x768
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-# Add the octave repo
-RUN add-apt-repository ppa:octave/stable
-
 # Installing apps (Note: git is here just in case noVNC needs it in launch.sh
 RUN apt-get update && apt-get -y install \
 	xvfb \
 	x11vnc \
 	supervisor \
 	fluxbox \
-	octave \
 	git-core \
 	git \
 	firefox
