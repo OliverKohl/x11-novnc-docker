@@ -6,7 +6,7 @@
 # TEST DOCKER:	docker exec -it epflsti/octave-x11-novnc-docker /bin/bash
 
 FROM phusion/baseimage:0.9.18
-MAINTAINER epflsti <stiitdev@groupes.epfl.ch>
+MAINTAINER OliverKohlDSc <oliver@kohl.bz>
 
 # Set correct environment variables
 ENV HOME /root
@@ -14,7 +14,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL C.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
-ENV TZ=Europe/Zurich
+ENV TZ=Europe/Vienna
 ENV SCREEN_RESOLUTION 1024x768
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
@@ -29,7 +29,8 @@ RUN apt-get update && apt-get -y install \
 	fluxbox \
 	octave \
 	git-core \
-	git
+	git \
+	firefox
 
 # House cleaning
 RUN apt-get autoclean
@@ -45,8 +46,8 @@ WORKDIR /root/
 ADD novnc /root/novnc/
 
 # A few examples for the demo
-WORKDIR /scripts
-ADD ./octave_scr /scripts
+#WORKDIR /scripts
+#ADD ./octave_scr /scripts
 
 # Can be configured to set octave settings
 # COPY qt-settings /root/.config/octave/qt-settings
